@@ -1,0 +1,23 @@
+
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', object: @user %>
+
+  <%= f.label :Nombre %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :Correo_electronico %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <div class="field">
+    <%= f.label :Modelo %><br>
+    <%= f.collection_select :departament_id, Departament.all, :id, :name %>
+  </div>
+
+  <%= f.label :Clave%>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.label :Confirma_tu_clave %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
